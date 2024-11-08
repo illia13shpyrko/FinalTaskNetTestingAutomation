@@ -1,28 +1,27 @@
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 namespace DotnetSelenium
 {
-    public class UC1
+    public class UC2
     {
         private IWebDriver driver;
 
         [SetUp]
         public void Setup()
         {
-            // WebDriver Instantiation
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             Console.WriteLine("Test Setup: Launching Chrome WebDriver");
         }
 
         [Test]
-        public void UC_1()
+        public void UC_2()
         {
             try
             {
-                Console.WriteLine("Test Started: Passing Invalid Credentials and Clearing Out");
+                Console.WriteLine("Test Started: Login with Valid Credentials");
 
                 // Webpage Navigation
                 driver.Navigate().GoToUrl("https://www.saucedemo.com/");
@@ -42,11 +41,6 @@ namespace DotnetSelenium
                 password.SendKeys("password1234");
                 Console.WriteLine("Entering password: password1234 (invalid)");
 
-                // Clearing the username field
-                username.SendKeys(Keys.Control + "a");
-                username.SendKeys(Keys.Delete);
-                Console.WriteLine("Clearing username field");
-
                 // Clearing the password field
                 password.SendKeys(Keys.Control + "a");
                 password.SendKeys(Keys.Delete);
@@ -55,15 +49,15 @@ namespace DotnetSelenium
                 // Clicking login button
                 loginButton.Submit();
                 Console.WriteLine("Clicking login button");
-                
+
                 // Identifying the error message
                 IWebElement errorMessageElement = driver.FindElement(By.XPath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3"));
                 string errorMessage = errorMessageElement.Text;
-                Console.WriteLine("Identifying the error message - Username is required");
+                Console.WriteLine("Identifying the error message - Password is required");
 
                 // Validating the error message
-                Assert.That(errorMessage, Is.EqualTo("Epic sadface: Username is required"));
-                Console.WriteLine("Validating the error message - Username is required");
+                Assert.That(errorMessage, Is.EqualTo("Epic sadface: Password is required"));
+                Console.WriteLine("Validating the error message - Password is required");
             }
             catch (Exception ex)
             {

@@ -1,10 +1,9 @@
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
-namespace DotnetSelenium
+namespace FinalTask_.Net_Testing_Automation
 {
-    public class UC1
+    public class UC3
     {
         private IWebDriver driver;
 
@@ -18,11 +17,11 @@ namespace DotnetSelenium
         }
 
         [Test]
-        public void UC_1()
+        public void UC_3()
         {
             try
             {
-                Console.WriteLine("Test Started: Passing Invalid Credentials and Clearing Out");
+                Console.WriteLine("Test Started: Login with Valid Credentials");
 
                 // Webpage Navigation
                 driver.Navigate().GoToUrl("https://www.saucedemo.com/");
@@ -36,34 +35,23 @@ namespace DotnetSelenium
                 var loginButton = driver.FindElement(By.CssSelector("#login-button"));
                 Console.WriteLine("Finding login button");
 
-                // Passing invalid values to the fields
-                username.SendKeys("username7891");
-                Console.WriteLine("Entering username: username7891 (invalid)");
-                password.SendKeys("password1234");
-                Console.WriteLine("Entering password: password1234 (invalid)");
-
-                // Clearing the username field
-                username.SendKeys(Keys.Control + "a");
-                username.SendKeys(Keys.Delete);
-                Console.WriteLine("Clearing username field");
-
-                // Clearing the password field
-                password.SendKeys(Keys.Control + "a");
-                password.SendKeys(Keys.Delete);
-                Console.WriteLine("Clearing password field");
+                // Passing valid values to the fields
+                username.SendKeys("standard_user");
+                Console.WriteLine("Entering username: standard_user (valid)");
+                password.SendKeys("secret_sauce");
+                Console.WriteLine("Entering password: secret_sauce (valid)");
 
                 // Clicking login button
                 loginButton.Submit();
                 Console.WriteLine("Clicking login button");
-                
-                // Identifying the error message
-                IWebElement errorMessageElement = driver.FindElement(By.XPath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3"));
-                string errorMessage = errorMessageElement.Text;
-                Console.WriteLine("Identifying the error message - Username is required");
 
-                // Validating the error message
-                Assert.That(errorMessage, Is.EqualTo("Epic sadface: Username is required"));
-                Console.WriteLine("Validating the error message - Username is required");
+                // Checking title name on the page
+                var title = driver.FindElement(By.ClassName("app_logo")).Text;
+                Console.WriteLine("Retrieving page title");
+
+                // Asserting the title name is right
+                Assert.That(title, Is.EqualTo("Swag Labs"));
+                Console.WriteLine("Verifying page title: Swag Labs");
             }
             catch (Exception ex)
             {
