@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinalTask .Net Testing Automation", "DotnetSelenium\FinalTask .Net Testing Automation.csproj", "{201A41B4-3E01-42DE-A6B6-AB187A96F7A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{201A41B4-3E01-42DE-A6B6-AB187A96F7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201A41B4-3E01-42DE-A6B6-AB187A96F7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201A41B4-3E01-42DE-A6B6-AB187A96F7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201A41B4-3E01-42DE-A6B6-AB187A96F7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18662112-8270-4D0D-8C8F-0B6C514D31F8}
+	EndGlobalSection
+EndGlobal
