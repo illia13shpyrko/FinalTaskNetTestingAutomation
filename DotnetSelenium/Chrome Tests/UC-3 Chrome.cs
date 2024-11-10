@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
-namespace FinalTask_.Net_Testing_Automation
+namespace FinalTask.Net_Testing_Automation
 {
-    public class UC3
+    public class UC_3_Chrome
     {
         private IWebDriver driver;
 
@@ -21,11 +21,15 @@ namespace FinalTask_.Net_Testing_Automation
         {
             try
             {
+                // Test Start
                 Console.WriteLine("Test Started: Login with Valid Credentials");
 
                 // Webpage Navigation
                 driver.Navigate().GoToUrl("https://www.saucedemo.com/");
                 Console.WriteLine("Navigating to SauceDemo login page");
+
+                    // Asserting the link is correct
+                    Assert.That(driver.Url, Is.EqualTo("https://www.saucedemo.com/"));
 
                 // Elements identification
                 var username = driver.FindElement(By.CssSelector("#user-name"));
@@ -34,6 +38,9 @@ namespace FinalTask_.Net_Testing_Automation
                 Console.WriteLine("Finding password input field");
                 var loginButton = driver.FindElement(By.CssSelector("#login-button"));
                 Console.WriteLine("Finding login button");
+
+                    // Asserting the login button is displayed on the page
+                    Assert.True(loginButton.Displayed);
 
                 // Passing valid values to the fields
                 username.SendKeys("standard_user");
@@ -49,9 +56,12 @@ namespace FinalTask_.Net_Testing_Automation
                 var title = driver.FindElement(By.ClassName("app_logo")).Text;
                 Console.WriteLine("Retrieving page title");
 
-                // Asserting the title name is right
-                Assert.That(title, Is.EqualTo("Swag Labs"));
-                Console.WriteLine("Verifying page title: Swag Labs");
+                    // Asserting the title name is right
+                    Assert.That(title, Is.EqualTo("Swag Labs"));
+                    Console.WriteLine("Verifying page title: Swag Labs");
+
+                    // Asserting the inventory page is displayed
+                    Assert.That(driver.Url, Is.EqualTo("https://www.saucedemo.com/inventory.html"));
             }
             catch (Exception ex)
             {

@@ -1,10 +1,9 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
-namespace DotnetSelenium
+namespace FinalTask.Net_Testing_Automation
 {
-    public class UC1
+    public class UC_1_Chrome
     {
         private IWebDriver driver;
 
@@ -18,15 +17,19 @@ namespace DotnetSelenium
         }
 
         [Test]
-        public void UC_1()
+        public void UC_1G()
         {
             try
             {
+                // Test Start
                 Console.WriteLine("Test Started: Passing Invalid Credentials and Clearing Out");
 
                 // Webpage Navigation
                 driver.Navigate().GoToUrl("https://www.saucedemo.com/");
                 Console.WriteLine("Navigating to SauceDemo login page");
+
+                    // Asserting the link is correct
+                    Assert.That(driver.Url, Is.EqualTo("https://www.saucedemo.com/"));
 
                 // Elements identification
                 var username = driver.FindElement(By.CssSelector("#user-name"));
@@ -35,6 +38,9 @@ namespace DotnetSelenium
                 Console.WriteLine("Finding password input field");
                 var loginButton = driver.FindElement(By.CssSelector("#login-button"));
                 Console.WriteLine("Finding login button");
+
+                    // Asserting the login button is displayed on the page
+                    Assert.True(loginButton.Displayed);
 
                 // Passing invalid values to the fields
                 username.SendKeys("username7891");
@@ -47,10 +53,18 @@ namespace DotnetSelenium
                 username.SendKeys(Keys.Delete);
                 Console.WriteLine("Clearing username field");
 
+                    // Asserting the username field is empty
+                    string userField = username.Text;
+                    Assert.That(userField, Is.EqualTo(""));
+
                 // Clearing the password field
                 password.SendKeys(Keys.Control + "a");
                 password.SendKeys(Keys.Delete);
                 Console.WriteLine("Clearing password field");
+
+                    // Asserting the username field is empty
+                    string passwordField = username.Text;
+                    Assert.That(passwordField, Is.EqualTo(""));
 
                 // Clicking login button
                 loginButton.Submit();
@@ -61,9 +75,9 @@ namespace DotnetSelenium
                 string errorMessage = errorMessageElement.Text;
                 Console.WriteLine("Identifying the error message - Username is required");
 
-                // Validating the error message
-                Assert.That(errorMessage, Is.EqualTo("Epic sadface: Username is required"));
-                Console.WriteLine("Validating the error message - Username is required");
+                    // Validating the error message
+                    Assert.That(errorMessage, Is.EqualTo("Epic sadface: Username is required"));
+                    Console.WriteLine("Validating the error message - Username is required");
             }
             catch (Exception ex)
             {
